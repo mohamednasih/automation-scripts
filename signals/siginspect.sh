@@ -18,7 +18,12 @@ i=1
 ##	(( i++ ));
 ## done
 pid=$1
+infos=$(grep -E 'Sig|ShdPnd' /proc/$pid/status)
 siginfos=$(grep -E 'Sig|ShdPnd' /proc/$pid/status | awk ' NR >= 3 {printf "%s\n", $2 }')
+if [ $# -eq 2 ]; then
+	echo "$siginfos"
+	echo "$infos"
+fi 
 
 ShdPnd=$(echo "$siginfos" | awk 'NR == 1')
 SigBlk=$(echo "$siginfos" | awk 'NR == 2')

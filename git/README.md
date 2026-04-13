@@ -48,6 +48,22 @@ Restores the first changed file to its last committed state.
 
 ---
 
+### `setup_global_git_ignore.sh`
+
+Creates a global Git ignore file at `~/.gitignore_global`.
+
+**Usage:**
+
+```bash
+./setup_global_git_ignore.sh
+```
+
+- Writes common editor and build artifacts to the global ignore file.
+- If `~/.gitignore_global` already exists, saves a timestamped backup before overwriting it.
+- Useful for keeping local-only files out of Git across all repositories.
+
+---
+
 ## Notes
 
 - All scripts operate on the first file shown by `git diff --name-only`, making them ideal for quick, repetitive tasks.
